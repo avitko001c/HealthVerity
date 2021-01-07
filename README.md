@@ -18,9 +18,6 @@
     software to perform *CI/CD* functions like *Jenkins/Travis* or whatever flavor of pipeline software your 
     company uses. With the included scripts to automate the build/push process they can easily be incorporated 
     into a pipeline with a *JenkinsFile/.circleci/create-pipeline.json* in the repo. 
-  - I was only able to deploy this using localstack and there are some things localstack cannot complete like an ALB 
-    or a complete ECR repository. If you want to deploy this in your *Development/Staging/Production* environment 
-    please update the `provider.tf` `backend.tf` and `data.tf` with your specifics.
   - If this was one of many applications that were to be hosted then I would create a *AWS EKS cluster* and write 
     the terraform code to deploy to the *Development/Staging/Prduction* cluster using the hashicorp kubernetes 
     provider. Containers can then be managed with the kubectl command tool and container services can be more 
@@ -39,6 +36,9 @@
     fails with `Error:- Failed to load state: Terraform 0.14.3 does not support state version 4, please update` if
     this happens I did not find a good workaround. I prefer using a remote state like consul/dynamodb/s3 or even
     terraform cloud.
+  - I was only able to deploy this using localstack and there are some things localstack cannot complete like an ALB 
+    or a complete ECR repository. If you want to deploy this in your *Development/Staging/Production* environment 
+    please update the `provider.tf` `backend.tf` and `data.tf` with your specifics.
   
 
 ## How to use ths project
