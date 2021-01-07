@@ -38,7 +38,7 @@
     terraform cloud.
   - I was only able to deploy this using localstack and there are some things localstack cannot complete like an ALB 
     or a complete ECR repository. If you want to deploy this in your *Development/Staging/Production* environment 
-    please update the `provider.tf` `backend.tf` and `data.tf` with your specifics.
+    please update the `provider.tf`, `backend.tf`. `variables.tf`,  and `data.tf` with your specifics.
   
 
 ## How to use ths project
