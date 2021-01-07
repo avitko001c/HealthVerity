@@ -35,7 +35,7 @@
     ```sh
     $ aws ecr get-login --no-include-email
     ``` 
-    Also `docker` by default on a local box needs to be run as `root` or via `sudo`. If you want to be able to run
+  - `docker` by default on a local box needs to be run as `root` or via `sudo`. If you want to be able to run
     `docker` as your local user check out https://docs.docker.com/engine/install/linux-postinstall/  
   - I am using a local remote state for `terraform` and there is a weird bug with version 0.12 on up where a destroy 
     fails with `Error:- Failed to load state: Terraform 0.14.3 does not support state version 4, please update` if
