@@ -19,18 +19,16 @@ resource "aws_ecr_repository" "nginx" {
 resource "null_resource" "update_docker_calibrate" {
   provisioner "local-exec" {
     working_dir = "../../calibrate_app"
-    command     = "../deploy/update-ecr.py --registry ${aws_ecr_repository.calibrate.repository_url}"
-    interpreter = ["/usr/bin/python3"]
+    command     = "./update-ecr.py --registry ${aws_ecr_repository.calibrate.repository_url}"
   }
 
   depends_on = [aws_ecr_repository.calibrate, aws_db_instance.calibrate, null_resource.rds_endpoint]
 }
 
-resource "null_resource" "update_nginx" {
+resource "null_resource" "update_docker_nginx" {
   provisioner "local-exec" {
     working_dir = "../../nginx"
-    command     = "../deploy/update-ecr.py --registry ${aws_ecr_repository.nginx.repository_url}"
-    interpreter = ["/usr/bin/python3"]
+    command     = "./update-ecr.py --registry ${aws_ecr_repository.nginx.repository_url}"
   }
 
   depends_on = [aws_ecr_repository.nginx]

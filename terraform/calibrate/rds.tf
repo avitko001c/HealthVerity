@@ -27,7 +27,15 @@ resource "aws_db_instance" "calibrate" {
 resource "null_resource" "rds_endpoint" {
   provisioner "local-exec" {
     working_dir = "../../calibrate_app/"
-    command     = "sed -i s/ChangeMeRDS/${aws_db_instance.calibrate.endpoint}/g Dockerfile"
     interpreter = ["/usr/bin/bash"]
+    command     = <<-EOT
+    exec "sed -e s/ChangeMeRDS/${aws_db_instance.calibrate.name}/g ./Dockerfile.tpl > ./Dockerfile.tmp"
+    exec "sed -i s/ChangeMePassword/$(aws_db_instance.calibrate.password)/g ./Dockerfile.tmp"
+    exec "sed -i s/ChangeMeUsername/$(aws_db_instance.calibrate.username)/g ./Dockerfile.tmp"
+    exec "sed -i s/ChangeMeHostname/$(aws_db_instance.calibrate.endpoint)/g ./Dockerfile.tmp"
+    exec "sed -i s/ChangeMePort/$(aws_db_instance.calibrate.port)/g ./Dockerfile.tmp"
+    exec "mv ./Dockerfile.tmp ./Dockerfile"
+    EOT
   }
+  depend_on = [aws_db_instance.calibrate]
 }
