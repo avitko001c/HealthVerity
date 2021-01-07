@@ -1,5 +1,8 @@
 ## Overview and Thoughts
 
+  - Since the exercise was only to deploy a single django app I opted to use *AWS Elastic Container Service* and have 
+    everything contained in its own application naming standard. *ECS* is cheaper then *EKS* and *EKS* wouldn't make 
+    sense for a single app if costs were an issue.
   - I designed this *XAAS* using *AWS Elastic Container Service* instead of *Elastic Beanstalk* because *ECS*
     provides granular security control by launching containers in your own *Amazon VPC*, allowing the use of *VPC 
     security groups* and network *ACLs*. Using *IAM*, you can determine which services and resources a container 
@@ -18,9 +21,6 @@
   - I was only able to deploy this using localstack and there are some things localstack cannot complete like an ALB 
     or a complete ECR repository. If you want to deploy this in your *Development/Staging/Production* environment 
     please update the `provider.tf` `backend.tf` and `data.tf` with your specifics.
-  - Since the exercise was only to deploy a single django app I opted to use *AWS Elastic Container Service* and have 
-    everything contained in its own application naming standard. *ECS* is cheaper then *EKS* and *EKS* wouldn't make 
-    sense for a single app if costs were an issue.
   - If this was one of many applications that were to be hosted then I would create a *AWS EKS cluster* and write 
     the terraform code to deploy to the *Development/Staging/Prduction* cluster using the hashicorp kubernetes 
     provider. Containers can then be managed with the kubectl command tool and container services can be more 
