@@ -1,5 +1,5 @@
 # Production Load Balancer
-resource "aws_lb" "production" {
+resource "aws_lb" "calibrate" {
   name               = "${var.ecs_cluster_name}-alb"
   load_balancer_type = "application"
   internal           = false
@@ -27,7 +27,7 @@ resource "aws_alb_target_group" "default_target_group" {
 
 # Listener (redirects traffic from the load balancer to the target group)
 resource "aws_alb_listener" "ecs_alb_http_listener" {
-  load_balancer_arn = aws_lb.production.id
+  load_balancer_arn = aws_lb.calibrate.id
   port              = "443"
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-2016-08"
