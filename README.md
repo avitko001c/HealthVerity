@@ -114,7 +114,14 @@
 
 7. Now you can open `https://your.domain.com/admin`. Note that `http://` won't work.
 
-8. Manually Build the Calibrate and Nginx Docker images and push them up to ECR:
+8. If you want to Manually Build the Calibrate and Nginx Docker images and push them up to ECR
+   edit the `ecs.tf` file and remove the `local-exec` statemants and run the following:
+
+   *note: The AWS Account ID is output after `terraform apply` is run. You can also manually run*
+
+    ```sh
+    $ aws sts get-caller-identity
+    ```
 
     ```sh
     $ cd calibrate
