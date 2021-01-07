@@ -19,15 +19,11 @@
 
 ## Some Gotchya's
 
-  - Since this terraform code is creating the ECR's for the first time there may be errors
-    with the update-ecr.py local-exec commands. It may be required to authenticate docker
-    with the new repositories before being able to push to them. 
-  - I am using a local remote state for *terraform* and there is a weird bug with version
-    0.12 on up where a destroy fails with the error... 
-
-    ```diff
-    *-Error:- Failed to load state: Terraform 0.14.3 does not support state version 4, please update*
-    ```  
+  - Since this terraform code is creating the ECR's for the first time there may be errors with the update-ecr.py 
+    local-exec commands. It may be required to authenticate docker with the new repositories before being able to 
+    push to them. 
+  - I am using a local remote state for *terraform* and there is a weird bug with version 0.12 on up where a destroy 
+    fails with the error `Error:- Failed to load state: Terraform 0.14.3 does not support state version 4, please update`
   
 
 ## How to use ths project
