@@ -20,7 +20,7 @@
     into a pipeline with a *JenkinsFile/.circleci/create-pipeline.json* in the repo. 
   - If this was one of many applications that were to be hosted then I would create a *AWS EKS cluster* and write 
     the terraform code to deploy to the *Development/Staging/Prduction* cluster using the hashicorp kubernetes 
-    provider. Containers can then be managed with the kubectl command tool and container services can be more 
+    provider. Containers can then be managed with the `kubectl` command tool and container services can be more 
     customized to fit your company needs. Networking and Security can be even tighter with *EKS* and you have more
     control over your environment.
   - The `terraform apply` outputs an *ALB URL* which needs to be manually added as a *CNAME* record for the allowed
