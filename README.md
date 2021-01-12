@@ -1,3 +1,14 @@
+## Project Scope/Requirements
+
+  HealthVerity needs to stand up a new web application, “HealthVerity Calibrate”, which will follow a traditional,
+  three-tiered architecture. This web application will be public and the user base is expected to grow as time goes
+  on. There will be moments when we expect usage to spike during quarterly conferences and demos. The website will 
+  consist of static content that can be generated during the build process. The application is django-based so it 
+  must be hosted with compute resources. Requirements of the storage layer are a database which will host the config
+  elements required of the django application. Please design a configuration (ex: terraform, cloudformation) for the 
+  infrastructure required to support this new web application. Be sure to consider design elements such as resiliency, 
+  reliability, scalability, security, and cost.
+
 ## Overview and Thoughts
 
   - Since the exercise was only to deploy a single django app I opted to use *AWS Elastic Container Service* and have 
